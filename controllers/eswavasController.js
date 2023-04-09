@@ -1,23 +1,9 @@
 import asyncHandler from "express-async-handler";
+import { authenticateWithMomoService } from "../services/eswavasService.js";
 
 const collectionsRequestToPay = asyncHandler(async (req, res) => {
-  const config = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username: process.env.MOMO_USER,
-      password: process.env.MOMO_PASSWORD,
-    }),
-  };
-
   try {
-    const accessTokenResponse = await fetch(
-      "https://eswavas-api.herokuapp.com/auth/",
-      config
-    );
+    const accessTokenResponse = await authenticateWithMomoService();
     const accessToken = await accessTokenResponse.json();
 
     // Request to pay
