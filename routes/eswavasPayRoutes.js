@@ -1,11 +1,18 @@
 import express from "express";
-import { protect, admin } from "../middleware/authMiddleware.js";
-import { collectionsRequestToPay } from "../controllers/eswavasController.js";
+import { protect } from "../middleware/authMiddleware.js";
+import {
+  collectionsRequestToPay,
+  collectionsGetAccountBalance,
+} from "../controllers/eswavasController.js";
 
 const router = express.Router();
 
 router
   .route("/collections/requestToPay")
   .post(protect, collectionsRequestToPay);
+
+router
+  .route("/collections/getAccountBalance")
+  .get(protect, collectionsGetAccountBalance);
 
 export default router;
