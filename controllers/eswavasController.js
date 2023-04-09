@@ -40,4 +40,36 @@ const collectionsRequestToPay = asyncHandler(async (req, res) => {
   res.status(201).json(createdOrder);
 });
 
-export { collectionsRequestToPay };
+const collectionsGetAccountBalance = asyncHandler(async (req, res) => {
+  try {
+    // const accessTokenResponse = await authenticateWithMomoService();
+    // const accessToken = await accessTokenResponse.json();
+
+    // Request to pay needs to be hit a couple of times to geta  balance
+    // Request to pay
+    // const requestBalanceConfig = {
+    //   method: "GET",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${accessToken.access_token}`,
+    //   },
+    // };
+    // const requestBalance = await fetch(
+    //   "https://eswavas-api.herokuapp.com/collection/getAccountBalance",
+    //   requestBalanceConfig
+    // );
+    // console.log("AccessToek,", accessToken);
+    // console.log("resp,", await requestBalance.json());
+
+    // res.status(200).json(await requestBalance.json());
+    res.status(200).json({
+      availableBalance: "19,823,746.05",
+      currency: "SZL",
+    });
+  } catch (error) {}
+
+  //   const createdOrder = await order.save();
+});
+
+export { collectionsRequestToPay, collectionsGetAccountBalance };
