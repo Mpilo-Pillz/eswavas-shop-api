@@ -96,8 +96,46 @@ const collectionsGetAccountStatus = asyncHandler(async (req, res) => {
   //   const createdOrder = await order.save();
 });
 
+const collectionsRequestWithdrawal = asyncHandler(async (req, res) => {
+  const accountPhoneNumber = "0243656543";
+  try {
+    const accessTokenResponse = await authenticateWithMomoService();
+    const accessToken = await accessTokenResponse.json();
+    const { amount, payerMessage, partyIdType } = req.body;
+
+    const requestAccountStatusConfig = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken.access_token}`,
+      },
+      body: JSON.stringify({
+        amount,
+        currency: "EUR",
+        externalId: "6353636",
+        payer: {
+          partyIdType,
+          partyId: "0248888736",
+        },
+        payerMessage,
+      }),
+    };
+    console.log("IN");
+    const requestAccountStatus = await fetch(
+      `https://eswavas-api.herokuapp.com/collection/v2/request-to-withdraw`,
+      requestAccountStatusConfig
+    );
+
+    res.status(200).json(await requestAccountStatus.json());
+  } catch (error) {}
+
+  //   const createdOrder = await order.save();
+});
+
 export {
   collectionsRequestToPay,
   collectionsGetAccountBalance,
   collectionsGetAccountStatus,
+  collectionsRequestWithdrawal,
 };
