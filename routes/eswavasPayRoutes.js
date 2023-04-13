@@ -4,6 +4,7 @@ import {
   collectionsRequestToPay,
   collectionsGetAccountBalance,
   collectionsGetAccountStatus,
+  collectionsRequestWithdrawal,
 } from "../controllers/eswavasController.js";
 
 const router = express.Router();
@@ -19,5 +20,9 @@ router
 router
   .route("/collections/getMomoAccountStatus")
   .get(protect, collectionsGetAccountStatus);
+
+router
+  .route("/collections/requestToWithdraw")
+  .post(protect, collectionsRequestWithdrawal);
 
 export default router;
