@@ -71,5 +71,33 @@ const collectionsGetAccountBalance = asyncHandler(async (req, res) => {
 
   //   const createdOrder = await order.save();
 });
+const collectionsGetAccountStatus = asyncHandler(async (req, res) => {
+  const accountPhoneNumber = "0243656543";
+  try {
+    const accessTokenResponse = await authenticateWithMomoService();
+    const accessToken = await accessTokenResponse.json();
 
-export { collectionsRequestToPay, collectionsGetAccountBalance };
+    const requestAccountStatusConfig = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken.access_token}`,
+      },
+    };
+    const requestAccountStatus = await fetch(
+      `https://eswavas-api.herokuapp.com/collection/api-user/accountholder/msisdn/${accountPhoneNumber}/active`,
+      requestAccountStatusConfig
+    );
+
+    res.status(200).json(await requestAccountStatus.json());
+  } catch (error) {}
+
+  //   const createdOrder = await order.save();
+});
+
+export {
+  collectionsRequestToPay,
+  collectionsGetAccountBalance,
+  collectionsGetAccountStatus,
+};
