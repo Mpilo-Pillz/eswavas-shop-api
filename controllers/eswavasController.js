@@ -35,7 +35,7 @@ const collectionsRequestToPay = asyncHandler(async (req, res) => {
     res.status(202).json(await requestToPay.json());
   } catch (error) {}
 
-  const createdOrder = await order.save();
+  // const createdOrder = await order.save();
 
   res.status(201).json(createdOrder);
 });
