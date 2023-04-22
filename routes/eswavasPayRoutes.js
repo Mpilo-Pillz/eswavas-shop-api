@@ -6,6 +6,7 @@ import {
   collectionsGetAccountStatus,
   collectionsRequestWithdrawal,
 } from "../controllers/eswavasController.js";
+import { createMomoUser } from "../controllers/eswavasMomoUserController.js";
 
 const router = express.Router();
 
@@ -24,5 +25,7 @@ router
 router
   .route("/collections/requestToWithdraw")
   .post(protect, collectionsRequestWithdrawal);
+
+router.route("/user/createMomoUser").post(protect, createMomoUser);
 
 export default router;
