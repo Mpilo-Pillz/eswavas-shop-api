@@ -1,9 +1,9 @@
 {
-  "name": "eswavas-shop-api",
+  "name": "express-shop-api",
   "version": "1.0.0",
-  "description": "api for eswavas ecommerce",
+  "description": "api for ecommerce",
   "main": "server.js",
-  "repository": "git@github.com:Mpilo-Pillz/eswavas-shop-api.git",
+  "repository": "git@github.com:Mpilo-Pillz/express-shop-api.git",
   "author": "Mpilo-Pillz <mpilo.dlamini@yahoo.com>",
   "license": "MIT",
   "type": "module",

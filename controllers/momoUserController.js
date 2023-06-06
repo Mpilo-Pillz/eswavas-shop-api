@@ -12,9 +12,8 @@ const createMomoUser = asyncHandler(async (req, res) => {
         userName: req.body.userName,
       }),
     };
-    // "https://eswavas-api.herokuapp.com/api-user/",
     const momoUser = await fetch(
-      "https://eswavas-api.herokuapp.com/api-user/",
+      `${process.env.PAYMENT_URL}/api-user/`,
       createMomoUserConfig
     );
 

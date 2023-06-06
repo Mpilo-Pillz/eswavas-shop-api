@@ -5,8 +5,8 @@ import {
   collectionsGetAccountBalance,
   collectionsGetAccountStatus,
   collectionsRequestWithdrawal,
-} from "../controllers/eswavasController.js";
-import { createMomoUser } from "../controllers/eswavasMomoUserController.js";
+} from "../controllers/momoPayController.js";
+import { createMomoUser } from "../controllers/momoUserController.js";
 
 const router = express.Router();
 

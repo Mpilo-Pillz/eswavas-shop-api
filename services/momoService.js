@@ -13,7 +13,8 @@ const authenticateWithMomoService = async () => {
 
   try {
     const momoToken = await fetch(
-      "https://eswavas-api.herokuapp.com/auth/",
+      `${process.env.PAYMENT_URL}/auth/`
+     ,
       config
     );
     return momoToken;

@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import { authenticateWithMomoService } from "../services/eswavasService.js";
+import { authenticateWithMomoService } from "../services/momoService.js";
 
 const collectionsRequestToPay = asyncHandler(async (req, res) => {
   try {
@@ -28,7 +28,7 @@ const collectionsRequestToPay = asyncHandler(async (req, res) => {
     };
 
     const requestToPay = await fetch(
-      "https://eswavas-api.herokuapp.com/collection/request-to-pay",
+      `${process.env.PAYMENT_URL}/collection/request-to-pay`,
       requestToPayConfig
     );
 
@@ -56,7 +56,7 @@ const collectionsGetAccountBalance = asyncHandler(async (req, res) => {
     //   },
     // };
     // const requestBalance = await fetch(
-    //   "https://eswavas-api.herokuapp.com/collection/getAccountBalance",
+    //   `${process.env.PAYMENT_URL}/collection/getAccountBalance`,
     //   requestBalanceConfig
     // );
     // console.log("AccessToek,", accessToken);
@@ -86,7 +86,7 @@ const collectionsGetAccountStatus = asyncHandler(async (req, res) => {
       },
     };
     const requestAccountStatus = await fetch(
-      `https://eswavas-api.herokuapp.com/collection/api-user/accountholder/msisdn/${accountPhoneNumber}/active`,
+      `${process.env.PAYMENT_URL}/collection/api-user/accountholder/msisdn/${accountPhoneNumber}/active`,
       requestAccountStatusConfig
     );
 
@@ -123,7 +123,7 @@ const collectionsRequestWithdrawal = asyncHandler(async (req, res) => {
     };
     console.log("IN");
     const requestAccountStatus = await fetch(
-      `https://eswavas-api.herokuapp.com/collection/v2/request-to-withdraw`,
+      `${process.env.PAYMENT_URL}/collection/v2/request-to-withdraw`,
       requestAccountStatusConfig
     );
 
